@@ -1,17 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar color="primary">
+    <img src="../assets/images/senparking2.png" alt="" class="logo"/>
+    <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid>
-    <ion-row *ngFor="let marque of marques">
-      <ion-col>{{marque.id}}</ion-col>
-      <ion-col>{{marque.marque}}</ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content [fullscreen]="true">
+  <ion-slides pager [options]="slideOptsOne">
+    <ion-slide><img src="../assets/images/voitures/1.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/bmw_s7.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/bmw_s8_coupe.jpg" alt="" class="sl"></ion-slide>
+  </ion-slides>
+  <ion-card class="ion-card">
+    <ion-card-header>
+      <ion-card-subtitle>Automoblie</ion-card-subtitle>
+      <ion-card-title>SenParking</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Avec une experience de plus de 10 ans , met a la disposition de sa clientéle 
+        un parc auntomobile de 50 bus de 15 a 65 places et plus de <strong>200 vehicules</strong> de differentes categories 
+        a sovoir Berline, 4x4 Pick Up ect. 
+      </p>
+      <p>
+        Pour vos seminaires, conferences et reunions internationales, notre  en matiere de transportvous sera d'un  apport 
+        considerable pour gerer les deplacements de vos hotes dans le confort et la securité.
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

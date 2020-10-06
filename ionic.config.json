@@ -1,5 +1,7 @@
 {
   "name": "frontSenParking",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

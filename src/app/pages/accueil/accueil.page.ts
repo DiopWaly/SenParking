@@ -9,6 +9,12 @@ import { CrudService } from 'src/app/services/crud.service';
 })
 export class AccueilPage implements OnInit {
 
+  public slideOptsOne = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay:true,
+    loop: true
+   };
   public marques;
   constructor(private crud : CrudService) { }
 

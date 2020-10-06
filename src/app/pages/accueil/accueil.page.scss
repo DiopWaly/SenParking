@@ -1,0 +1,21 @@
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.ion-card{
+    margin: 0px 0px 0px 0px;
+    padding: 1px 1px 1px 1px;
+    background-color: orangered;
+    p{
+        color: black;
+    }
+}
+
+.sl{
+    margin-bottom: 14px;
+}
+ion-slides {
+    --bullet-background: red;
+    --bullet-background-active: rebeccapurple;
+}
