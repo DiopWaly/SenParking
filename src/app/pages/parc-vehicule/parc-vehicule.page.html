@@ -7,6 +7,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Categorie</ion-label>
+          <ion-select class="custom-options" interface="popover" [(ngModel)] ="place" (ionChange)="selectCategorie()">
+            <ion-select-option *ngFor="let item of items"  [value]="item">{{item.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let voiture of voitures" >
+    <ion-card-content>
+      <ion-card-title>{{voiture.libelle}}</ion-card-title>
+      <ion-list>
+        <ion-item lines="none">
+            <ion-img [src]="voiture.image"></ion-img>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <strong>{{voiture.capacite}}</strong>
+            <p><ion-icon name="checkmark" class="icone"></ion-icon> {{voiture.air}}</p>
+            <p><ion-icon name="checkmark" class="icone"></ion-icon> {{voiture.option}}</p>
+            <p><ion-icon name="battery-full-outline" class="icone"></ion-icon> {{voiture.condition}}</p>
+            <p><ion-icon name="logo-usd" class="icone"></ion-icon><strong>{{voiture.price}}</strong> /jr</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="action-button" slot="end">
+        <ion-button expand="block" (click)="reservation(voiture)">
+          <ion-icon slot="start" name="cart"></ion-icon>réserver
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>  
 </ion-content>

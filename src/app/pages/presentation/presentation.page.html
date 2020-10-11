@@ -8,5 +8,13 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-button (click)="add()">Ajouter</ion-button>
+  <ion-card *ngFor="let voiture of voitures" >
+    <ion-card-header>
+      <ion-card-title>{{voiture.libelle}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="voiture.url">Image</ion-img>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

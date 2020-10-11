@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationPage implements OnInit {
 
+  public place;
+  public slideOptsOne = {
+    initialSlide: 0,
+    slidesPerView: 3,
+    // autoplay:true,
+    // loop: true
+   };
   constructor() { }
 
   ngOnInit() {
   }
 
+  recuperMobileType(){
+    console.log(this.place);
+    
+  }
 }

@@ -1,8 +1,8 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
-import { ContactPage } from './contact.page';
-import { ContactPageRoutingModule } from './contact-routing.module';
+import { InscriptionPage } from './inscription.page';
+import { InscriptionPageRoutingModule } from './inscription-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 
@@ -12,8 +12,8 @@ import { NgModule } from '@angular/core';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    ContactPageRoutingModule
+    InscriptionPageRoutingModule
   ],
-  declarations: [ContactPage]
+  declarations: [InscriptionPage]
 })
-export class ContactPageModule {}
+export class InscriptionPageModule {}

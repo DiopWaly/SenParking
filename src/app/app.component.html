@@ -1,15 +1,29 @@
 <ion-app>
+  <ion-buttons slot="end">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
+      <ion-content [fullscreen]="true">
         <div class="menu-header-bg"></div>
-        <div class="header-content">
+        <div class="header-content" *ngIf="test == 123; else default">
           <img src="assets/img/me.jpg" alt="" />
           <ion-label>
+            <p>Bienvenue,</p>
             <h2>Dr. Waly Diop</h2>
-            <p>Developpeur mobile</p>
           </ion-label>
         </div>
+        <ng-template #default>
+          <div class="header-content">
+            <img src="../assets/images/senparking2.png" alt="" />
+            <ion-label>
+              <h2>Bienvenue,</h2>
+              <p>Developpeur mobile</p>
+            </ion-label>
+          </div>
+        </ng-template>
+        
+
         <!-- <div class="action-button">
           <ion-button>
             <ion-icon slot="start" name="add"></ion-icon> Add Branch
@@ -20,13 +34,16 @@
           <!-- <ion-note>hi@ionicframework.com</ion-note> -->
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+            <ion-item (click)="navigate(p.url)" lines="none" detail="false" [class.selected]="selectedIndex == i">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <div class="menu-footer-bg"></div>
+        <div class="menu-footer-bg">
+          <img src="../assets/images/senparking2.png" alt=""/>
+        </div>
+        <div class="menu-footer-bg2"></div>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

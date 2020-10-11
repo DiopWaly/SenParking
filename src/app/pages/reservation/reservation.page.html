@@ -8,5 +8,30 @@
 </ion-header>
 
 <ion-content>
-
+  <!-- <h1 class="title">Resevation</h1> -->
+  <div class="service">
+    <p>
+      La satifaction, du client un slogan bien reel a SENPARKING. Avec un service commercial dynamique,
+      réactif est toujours disponible, nous traitons dans les meilleurs délais toutes vos demande de cotation.
+      Nous disposons d'un parc de prés de 400 véhicule tous climatisés repartis en categories 
+    </p>
+  </div>
+  <ion-slides [options]="slideOptsOne">
+    <ion-slide><img src="../assets/images/voitures/1.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/bmw_s7.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/bmw_s8_coupe.jpg" alt="" class="sl"></ion-slide>
+  </ion-slides>
+  <ion-card class="res">
+    <ion-card-header>
+      <ion-card-title>Type de voiture :</ion-card-title>
+    </ion-card-header>
+    <ion-card-title>
+    <ion-item>
+      <ion-select placeholder="Selectionner... " [(ngModel)] ="place" (ionChange)="recuperMobileType()">
+        <ion-select-option value="peperoni">Peperoni</ion-select-option>
+        <ion-select-option value="peperoni2">Peperoni</ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-card-title>
+  </ion-card>
 </ion-content>

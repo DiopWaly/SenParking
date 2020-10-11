@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthentificationService } from './services/authentification.service';
 import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -36,14 +38,21 @@ export class AppComponent implements OnInit {
       title: 'Contact',
       url: '/contact',
       icon: 'at'
+    },
+    {
+      title: 'Logout',
+      url: '/login',
+      icon: 'log-out'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-
+  public test = 123;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router : Router,
+    private authser: AuthentificationService
   ) {
     this.initializeApp();
   }
@@ -56,5 +65,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  navigate(url: string){
+    if(url == "/login"){
+      this.authser.logout();
+      this.router.navigate(['accueil']);
+    }else{
+      this.router.navigate([url]);
+    }
   }
 }
