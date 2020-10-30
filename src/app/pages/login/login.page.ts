@@ -1,14 +1,15 @@
+import { AlertController, NavController } from '@ionic/angular';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
-import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AppComponent } from './../../app.component';
+import { AppPage } from './../../../../e2e/src/app.po';
 import { AuthentificationService } from './../../services/authentification.service';
+import { CrudService } from './../../services/crud.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { TestService } from 'src/app/services/test.service';
-import { auth } from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,8 @@ export class LoginPage implements OnInit {
   signInForm: FormGroup;
   submitError: string;
   authRedirectResult: Subscription;
+  public user : any;
+  private database: SQLiteObject;
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -34,16 +37,17 @@ export class LoginPage implements OnInit {
   constructor(
     public angularFire: AngularFireAuth,
     public router: Router,
-    private ngZone: NgZone,
-    private authService: TestService,
     private AlertController: AlertController,
-    private auth : AuthentificationService
+    private auth : AuthentificationService,
+    private sqlite: SQLite,
+    private navCtrl: NavController,
+    private crud: CrudService
 
   ) {
       this.signInForm = new FormGroup({
         'email': new FormControl('', Validators.compose([
             Validators.required,
-            Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            Validators.pattern('^\.+$')
           ])),
         'password': new FormControl('', Validators.compose([
             Validators.minLength(6),
@@ -53,7 +57,6 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-
   }
   async presentAlert() {
     const alert = await this.AlertController.create({
@@ -68,13 +71,32 @@ export class LoginPage implements OnInit {
   }
 
   onLogin(){
-    console.log();
-    let res = this.auth.login(this.signInForm.value['email'], this.signInForm.value['password']);
-    if(res == true){
-          this.router.navigate(['detail-reservation'])
-    }else{
-      this.presentAlert();
-      this.submitError = "Exist pas de compte pour cette identifiant voulez-vous inscrire ???";
-    }
+    const client = {
+        email : this.signInForm.value['email'], 
+        password : this.signInForm.value['password']
+      };
+      this.auth.login(client)
+      .subscribe(data=>{
+        if(data){
+          this.navCtrl.pop();
+          console.log(this.crud.getVoiture());
+          if(this.crud.getVoiture()){
+            this.router.navigate(['detail-reservation']);
+          }else{
+            this.router.navigate(['accueil']);
+          }
+          this.user = data;
+          this.crud.user = data;
+          this.auth.auth = true;
+          this.auth.saveToken(data);
+          console.log(this.user);
+        }else{
+          this.presentAlert();
+          this.submitError = "Exist pas de compte pour cette identifiant voulez-vous inscrire ???";
+        }
+      },err=>{
+        console.log(err);
+      });
   }
+ 
 }

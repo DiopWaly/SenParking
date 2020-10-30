@@ -8,13 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="add()">Ajouter</ion-button>
   <ion-card *ngFor="let voiture of voitures" >
     <ion-card-header>
       <ion-card-title>{{voiture.libelle}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-img [src]="voiture.url">Image</ion-img>
+      <ion-img [src]="voiture.url" (click)="viewImage(voiture)">Image</ion-img>
     </ion-card-content>
   </ion-card>
+  <ion-button class="action-button" (click)="reserve()">
+    <ion-icon slot="start" name="cart"></ion-icon>Ajouter
+  </ion-button>
 </ion-content>

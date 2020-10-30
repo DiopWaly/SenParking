@@ -19,3 +19,19 @@ ion-slides {
     --bullet-background: red;
     --bullet-background-active: rebeccapurple;
 }
+.toolbar{
+    --color: white;
+    --background: linear-gradient(90deg, #7590d6 0%, #4d71d7 100%);
+    text-align: center;
+    h2{
+        color: white;
+        font-weight: 300px;
+      }
+      p{
+        font-size: 12px;
+        font-weight: 100;
+        color: #e4e4e4;
+        letter-spacing: 0.4px;
+      }
+    
+}

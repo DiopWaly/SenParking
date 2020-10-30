@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthentificationService } from './../../services/authentification.service';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -16,9 +17,23 @@ export class AccueilPage implements OnInit {
     loop: true
    };
   public marques;
-  constructor(private crud : CrudService) { }
+  public user: any
+  constructor(private crud : CrudService, private auth: AuthentificationService) { }
 
   ngOnInit() {
+    if(this.crud.user){
+      this.user = this.crud.user;
+    }else{
+      this.user ={
+        prenom: localStorage.getItem("prenom"),
+        nom: localStorage.getItem("nom"),
+        civilite: localStorage.getItem("civilite")
+      };
+      console.log("waly");
+      console.log(this.user);
+      
+    }
+    console.log(this.user);
     this.listMarque();
   }
   listMarque(){

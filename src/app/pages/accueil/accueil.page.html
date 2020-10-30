@@ -1,6 +1,18 @@
 <ion-header>
-  <ion-toolbar  color="secondary">
-    <img src="../assets/images/senparking2.png" alt="" class="logo"/>
+  <ion-toolbar class="toolbar">
+    <!-- <img src="../assets/images/senparking2.png" alt="" class="logo"/> -->
+    <div *ngIf="user.prenom != null; else default">
+      <ion-label>
+        <h2>Bienvenue,</h2>
+        <p>{{user.prenom}} {{user.nom}}</p>
+      </ion-label>
+    </div>
+    <ng-template #default>
+      <ion-label>
+        <h2>Bienvenue sur</h2>
+        <p>Senparking</p>
+      </ion-label>
+    </ng-template>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -9,9 +21,11 @@
 
 <ion-content [fullscreen]="true">
   <ion-slides pager [options]="slideOptsOne">
-    <ion-slide><img src="../assets/images/voitures/1.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/1.png" alt="" class="sl"></ion-slide>
     <ion-slide><img src="../assets/images/voitures/bmw_s7.jpg" alt="" class="sl"></ion-slide>
     <ion-slide><img src="../assets/images/voitures/bmw_s8_coupe.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/bmw.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/range.jpg" alt="" class="sl"></ion-slide>
   </ion-slides>
   <ion-card class="ion-card">
     <ion-card-header>

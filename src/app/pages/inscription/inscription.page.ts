@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Client } from 'src/app/classes/client';
+import { CrudService } from 'src/app/services/crud.service';
 import { NavController } from '@ionic/angular';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
@@ -37,7 +38,8 @@ export class InscriptionPage implements OnInit {
       { type: 'pattern', message: 'En valide svp' }
     ],
     'tel': [
-      { type: 'required', message: 'Telephone is required.' }
+      { type: 'required', message: 'Telephone is required.' },
+      { type: 'pattern', message: 'Enrer un numero tel valide !!!' }
     ],
     'numpermis': [
       { type: 'pattern', message: 'Entrer un numero de permis valide svp' }
@@ -58,14 +60,13 @@ export class InscriptionPage implements OnInit {
   constructor(
     public angularFire: AngularFireAuth,
     public router: Router,
-    private ngZone: NgZone,
-    private authService: TestService,
-    private back: NavController
+    private back: NavController,
+    private crud: CrudService
   ) {
    this.clientForm = new FormGroup({
       'prenom': new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9]+$')
+        Validators.pattern('^[a-zA-Z0-9 ]+$')
       ])),
       'nom': new FormControl('', Validators.compose([
         Validators.required,
@@ -108,6 +109,14 @@ export class InscriptionPage implements OnInit {
   inscrir(){
     let client = new Client(this.clientForm);
     console.log(client);
+    this.crud.add("client/add",client)
+      .subscribe(data=>{
+        console.log(data);
+        this.router.navigate(['login']);
+      },err=>{
+        console.log(err);
+        
+      });
   }
   pop(){
     this.back.back();

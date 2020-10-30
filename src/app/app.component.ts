@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 import { AuthentificationService } from './services/authentification.service';
 import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -12,7 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public selectedIndex = 0;
+  public selectedIndex = "/accueil";
   public appPages = [
     {
       title: 'Accueil',
@@ -41,12 +41,13 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Logout',
-      url: '/login',
+      url: '/logout',
       icon: 'log-out'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  public test = 123;
+  public test: string;
+  public user: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -65,13 +66,28 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user ={
+      prenom: localStorage.getItem("prenom"),
+      nom: localStorage.getItem("nom"),
+      civilite: localStorage.getItem("civilite")
+    };
+    this.test = localStorage.getItem("myToken");
   }
   navigate(url: string){
-    if(url == "/login"){
+    // console.log("waly "+btoa(url));
+    if(url == "/logout"){
       this.authser.logout();
+      this.ngOnInit();
+      this.appPages[5] = {
+        title: 'Login',
+        url: '/login',
+        icon: 'log-out'
+      }
+      this.selectedIndex =  "/accueil";
       this.router.navigate(['accueil']);
     }else{
       this.router.navigate([url]);
+      this.selectedIndex =  url;
     }
   }
 }

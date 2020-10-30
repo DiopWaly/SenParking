@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { LoginPipe } from './pages/login.pipe';
 import { NgModule } from '@angular/core';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { RouteReuseStrategy } from '@angular/router';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -47,7 +48,8 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     SQLite,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    PhotoViewer
   ],
   bootstrap: [AppComponent]
 })

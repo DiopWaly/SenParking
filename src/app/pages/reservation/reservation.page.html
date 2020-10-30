@@ -17,8 +17,8 @@
     </p>
   </div>
   <ion-slides [options]="slideOptsOne">
-    <ion-slide><img src="../assets/images/voitures/1.jpg" alt="" class="sl"></ion-slide>
-    <ion-slide><img src="../assets/images/voitures/bmw_s7.jpg" alt="" class="sl"></ion-slide>
+    <ion-slide><img src="../assets/images/voitures/1.png" alt="" class="sl"></ion-slide>
+    <ion-slides><img src="../assets/images/voitures/bmw_s7.jpg" alt="" class="sl"></ion-slides>
     <ion-slide><img src="../assets/images/voitures/bmw_s8_coupe.jpg" alt="" class="sl"></ion-slide>
   </ion-slides>
   <ion-card class="res">
@@ -28,8 +28,7 @@
     <ion-card-title>
     <ion-item>
       <ion-select placeholder="Selectionner... " [(ngModel)] ="place" (ionChange)="recuperMobileType()">
-        <ion-select-option value="peperoni">Peperoni</ion-select-option>
-        <ion-select-option value="peperoni2">Peperoni</ion-select-option>
+        <ion-select-option *ngFor="let item of items" [value]="item.id">{{item.categorie}}</ion-select-option>
       </ion-select>
     </ion-item>
     </ion-card-title>

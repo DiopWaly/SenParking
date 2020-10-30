@@ -14,7 +14,7 @@
         <ion-item>
           <ion-label>Categorie</ion-label>
           <ion-select class="custom-options" interface="popover" [(ngModel)] ="place" (ionChange)="selectCategorie()">
-            <ion-select-option *ngFor="let item of items"  [value]="item">{{item.name}}</ion-select-option>
+            <ion-select-option *ngFor="let item of items"  [value]="item.id">{{item.categorie}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
@@ -22,10 +22,10 @@
   </ion-card>
   <ion-card *ngFor="let voiture of voitures" >
     <ion-card-content>
-      <ion-card-title>{{voiture.libelle}}</ion-card-title>
+      <ion-card-title>{{voiture.modele.categorie.categorie}} {{voiture.modele.marque.marque}} {{voiture.modele.annee.annee}} </ion-card-title>
       <ion-list>
         <ion-item lines="none">
-            <ion-img [src]="voiture.image"></ion-img>
+            <ion-img [src]="voiture.image" (click)="viewImage(voiture)" class="resize"></ion-img>
         </ion-item>
         <ion-item>
           <ion-label>

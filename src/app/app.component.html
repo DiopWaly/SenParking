@@ -6,11 +6,11 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content [fullscreen]="true">
         <div class="menu-header-bg"></div>
-        <div class="header-content" *ngIf="test == 123; else default">
+        <div class="header-content" *ngIf="test == 'qwerty' ; else default">
           <img src="assets/img/me.jpg" alt="" />
           <ion-label>
             <p>Bienvenue,</p>
-            <h2>Dr. Waly Diop</h2>
+            <h2>Dr. {{user.prenom}} {{user.nom}}</h2>
           </ion-label>
         </div>
         <ng-template #default>
@@ -34,7 +34,7 @@
           <!-- <ion-note>hi@ionicframework.com</ion-note> -->
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="navigate(p.url)" lines="none" detail="false" [class.selected]="selectedIndex == i">
+            <ion-item (click)="navigate(p.url)" lines="none" detail="false" [class.selected]="selectedIndex == p.url" >
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>

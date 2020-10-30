@@ -18,7 +18,7 @@
       </ion-item>
       <div class="error-container">
         <ng-container *ngFor="let validation of validation_messages.prenom">
-          <div class="error-message" *ngIf="clientForm.get('email').hasError(validation.type) && (clientForm.get('prenom').dirty || clientForm.get('prenom').touched)">
+          <div class="error-message" *ngIf="clientForm.get('prenom').hasError(validation.type) && (clientForm.get('prenom').dirty || clientForm.get('prenom').touched)">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ validation.message }}</span>
           </div>
@@ -46,7 +46,7 @@
       </ion-item>
       <div class="error-container">
         <ng-container *ngFor="let validation of validation_messages.datenaissance">
-          <div class="error-message" *ngIf="clientForm.get('email').hasError(validation.type) && (clientForm.get('datenaissance').dirty || clientForm.get('datenaissance').touched)">
+          <div class="error-message" *ngIf="clientForm.get('datenaissance').hasError(validation.type) && (clientForm.get('datenaissance').dirty || clientForm.get('datenaissance').touched)">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ validation.message }}</span>
           </div>
@@ -68,7 +68,7 @@
       </ion-item>
       <div class="error-container">
         <ng-container *ngFor="let validation of validation_messages.tel">
-          <div class="error-message" *ngIf="clientForm.get('lieunaissance').hasError(validation.type) && (clientForm.get('tel').dirty || clientForm.get('tel').touched)">
+          <div class="error-message" *ngIf="clientForm.get('tel').hasError(validation.type) && (clientForm.get('tel').dirty || clientForm.get('tel').touched)">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ validation.message }}</span>
           </div>
