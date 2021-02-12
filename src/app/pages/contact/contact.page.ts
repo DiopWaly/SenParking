@@ -55,6 +55,10 @@ export class ContactPage implements OnInit {
   ngOnInit() {
   }
 
+  onClick(){
+    console.log("pass")
+  }
+
   // Once the auth provider finished the authentication flow, and the auth redirect completes,
   // redirect the user to the profile page
   redirectLoggedUserToProfilePage() {

@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Presentation',
-      url: '/presentation',
+      url: '/imprime-reservation',
       icon: 'paper-plane'
     },
     {

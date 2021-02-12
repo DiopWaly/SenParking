@@ -3,23 +3,27 @@ export class Client {
     private prenom : string;
     private nom : string;
     private civilite : string;
-    private datenaissance : Date;
-    private lieunaissance : string;
+    private dateNaissance : Date;
+    private lieuNaissance : string;
     private tel : string;
-    private numpermis : string;
+    private numPermis : string;
     private email : string;
-    private username : string;
+    private userName : string;
     private password : string;
+    private adresse : string;
+    // private profil: File
     constructor(clientForm: FormGroup){
         this.prenom = clientForm.value['prenom'];
         this.nom = clientForm.value['nom'];
         this.civilite = clientForm.value['civilite'];
-        this.datenaissance = clientForm.value['datenaissance'];
-        this.lieunaissance = clientForm.value['lieunaissance'];
+        this.dateNaissance = clientForm.value['datenaissance'];
+        this.lieuNaissance = clientForm.value['lieunaissance'];
         this.tel = clientForm.value['tel'];
-        this.numpermis = clientForm.value['numpermis'];
+        this.numPermis = clientForm.value['numpermis'];
         this.email = clientForm.value['email'];
-        this.username = clientForm.value['username'];
+        this.userName = clientForm.value['username'];
         this.password = clientForm.value['password'];
+        this.adresse = clientForm.value['adresse'];
+        // this.profil = clientForm.value['profil'];
     }
 }

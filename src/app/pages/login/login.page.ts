@@ -62,8 +62,8 @@ export class LoginPage implements OnInit {
     const alert = await this.AlertController.create({
       cssClass: 'my-custom-class',
       header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      subHeader: 'Identifiant',
+      message: 'Login ou mot de passe incorect !!!',
       buttons: ['OK']
     });
 
@@ -85,6 +85,7 @@ export class LoginPage implements OnInit {
           }else{
             this.router.navigate(['accueil']);
           }
+          data['dateNaissance'] = data['dateNaissance'].split('T')[0]
           this.user = data;
           this.crud.user = data;
           this.auth.auth = true;

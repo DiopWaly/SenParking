@@ -26,6 +26,15 @@ export class PresentationPage implements OnInit {
   }
   reserve(){
     this.route.navigate(['parc-vehicule']);
+    // let options : ImagePickerOptions = {
+    //   maximumImagesCount : 4,
+    //   outputType : OutputType.FILE_URL
+    // }
+    // this.imagePicker.getPictures(options).then((results) => {
+    //   for (var i = 0; i < results.length; i++) {
+    //       console.log('Image URI: ' + results[i]);
+    //   }
+    // }, (err) => { });
   }
   viewImage(voiture: any){
     console.log(voiture);

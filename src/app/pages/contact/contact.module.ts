@@ -12,7 +12,7 @@ import { NgModule } from '@angular/core';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    ContactPageRoutingModule
+    ContactPageRoutingModule,
   ],
   declarations: [ContactPage]
 })

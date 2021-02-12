@@ -1,9 +1,168 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>detailReservation</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/parc-vehicule" color="primary"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  
+<ion-content [fullscreen]="true" class="sign-in-content">
+  <h2 class="auth-title">
+    Infos personnelle
+  </h2>
+  <form [formGroup]="clientForm" (ngSubmit)="inscrir()" *ngIf="voiture">
+    <ion-list class="inputs-list" lines="full">
+    <ion-item lines="none">
+        <ion-img [src]="voiture.image" (click)="viewImage(voiture)" class="resize"></ion-img>
+    </ion-item>
+      <ion-item>
+        <ion-label>Voiture Choisi : {{voiture.matricule}}</ion-label>
+      </ion-item>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+              <ion-item class="input-item">
+                <ion-label position="stacked">Date Début</ion-label>
+                <ion-input type="date" formControlName="datereservation" clearInput autocapitalize="off"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.datereservation">
+                  <div class="error-message" *ngIf="clientForm.get('datereservation').hasError(validation.type) && (clientForm.get('datereservation').dirty || clientForm.get('datereservation').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+          </ion-col>
+          <ion-col size="6">
+              <ion-item class="input-item">
+                <ion-label position="stacked">Date Retour</ion-label>
+                <ion-input type="date" formControlName="dateretour" clearInput autocapitalize="off"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.dateretour">
+                  <div class="error-message" *ngIf="clientForm.get('dateretour').hasError(validation.type) && (clientForm.get('dateretour').dirty || clientForm.get('dateretour').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <ion-item>
+              <ion-label>Driver</ion-label>
+              <ion-checkbox color="primary" formControlName="withdriver" [(ngModel)]="drive" (ionChange)="withdriver()"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col size="8">
+              <ion-item class="input-item">
+                <ion-label position="stacked">Lieu de mise a disposition:</ion-label>
+                <ion-input type="text" formControlName="lieudispo" clearInput autocapitalize="off"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.lieudispo">
+                  <div class="error-message" *ngIf="clientForm.get('lieudispo').hasError(validation.type) && (clientForm.get('lieudispo').dirty || clientForm.get('lieudispo').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+          </ion-col>
+        </ion-row>
+        <ion-item lines="none">
+          <ion-label>Information du client</ion-label>
+        </ion-item>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="stacked">Nom</ion-label>
+              <ion-input type="text" value="{{user.nom}}"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item class="input-item">
+              <ion-label position="stacked">Tel</ion-label>
+              <ion-input type="tel" value="{{user.tel}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input-item">
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email" value="{{user.email}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="input-item">
+            <ion-label position="stacked">Adresse</ion-label>
+            <ion-input type="text" value="Keur massar"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="!drive">
+        <ion-row>
+          <ion-col size="6">
+              <ion-item class="input-item">
+                <ion-label position="stacked">Date Naissance</ion-label>
+                <ion-input type="date" clearInput autocapitalize="off"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.datereservation">
+                  <div class="error-message" *ngIf="clientForm.get('datereservation').hasError(validation.type) && (clientForm.get('datereservation').dirty || clientForm.get('datereservation').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+          </ion-col>
+          <ion-col size="6">
+              <ion-item class="input-item">
+                <ion-label position="stacked">Date Permis</ion-label>
+                <ion-input type="date" formControlName="datepermis"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.dateretour">
+                  <div class="error-message" *ngIf="clientForm.get('dateretour').hasError(validation.type) && (clientForm.get('dateretour').dirty || clientForm.get('dateretour').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input-item">
+              <ion-label position="stacked">N°Permis</ion-label>
+              <ion-input type="number" formControlName="numerpermiscond"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+      </ion-grid>
+    </ion-list>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+            <ion-button class="action-button" type="submit" [disabled]="!clientForm.valid">Valider</ion-button>
+            <div class="error-container" *ngIf="submitError">
+              <div class="error-message">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ submitError }}</span>
+              </div>
+            </div>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button class="action-button" color="danger" (click)="pop()">Retour</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

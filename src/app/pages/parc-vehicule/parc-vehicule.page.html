@@ -1,7 +1,10 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button color="primary"></ion-back-button>
     </ion-buttons>
     <ion-title>parc-vehicule</ion-title>
   </ion-toolbar>
@@ -20,20 +23,20 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngFor="let voiture of voitures" >
+  <ion-card *ngFor="let voiture of vehicules" >
     <ion-card-content>
       <ion-card-title>{{voiture.modele.categorie.categorie}} {{voiture.modele.marque.marque}} {{voiture.modele.annee.annee}} </ion-card-title>
       <ion-list>
         <ion-item lines="none">
-            <ion-img [src]="voiture.image" (click)="viewImage(voiture)" class="resize"></ion-img>
+            <ion-img [(src)]="voiture.image" (click)="viewImage(voiture)" class="resize"></ion-img>
         </ion-item>
         <ion-item>
           <ion-label>
             <strong>{{voiture.capacite}}</strong>
             <p><ion-icon name="checkmark" class="icone"></ion-icon> {{voiture.air}}</p>
-            <p><ion-icon name="checkmark" class="icone"></ion-icon> {{voiture.option}}</p>
-            <p><ion-icon name="battery-full-outline" class="icone"></ion-icon> {{voiture.condition}}</p>
-            <p><ion-icon name="logo-usd" class="icone"></ion-icon><strong>{{voiture.price}}</strong> /jr</p>
+            <p><ion-icon name="checkmark" class="icone"></ion-icon> {{voiture.options}}</p>
+            <p><ion-icon name="battery-full-outline" class="icone"></ion-icon> {{voiture.conditions}}</p>
+            <p><ion-icon name="logo-usd" class="icone"></ion-icon><strong>{{voiture.tarifjrne}}</strong> /jr</p>
           </ion-label>
         </ion-item>
       </ion-list>

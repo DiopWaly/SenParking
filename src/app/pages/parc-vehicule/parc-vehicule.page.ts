@@ -18,6 +18,9 @@ export class ParcVehiculePage implements OnInit {
   public items: any; 
   public place;
   public voitures = [];
+  //pour test locale
+  private v: any = [];
+  public vehicules=[];
   constructor(
         private authentification : AuthentificationService, 
         private router: Router,
@@ -38,7 +41,14 @@ export class ParcVehiculePage implements OnInit {
   }
   selectCategorie(){
       console.log(this.place);
-      this.selectVoitures("voiture/trie/"+this.place);
+      //this.selectVoitures("voiture/trie/"+this.place);
+      this.vehicules=[];
+      for(let i=0; i< this.v["length"]; i++){
+        if(this.v[i].modele.categorie.id == this.place){
+            console.log("waly");
+            this.vehicules.push(this.v[i]);
+          }
+      }
   }
   reservation(voiture:any){
     this.crud.setVoiture(new Voiture(voiture));
@@ -54,32 +64,13 @@ export class ParcVehiculePage implements OnInit {
   recupeCategorie(){
     this.crud.get('categorie/all')
       .subscribe(data=>{
+        console.log(data);
         this.items = data;
       },err=>{
         console.log(err);
       });
   }
-  addvoiture(){
-    let v = {
-      libelle: "Awesome Title",
-      capacite: "4 sieges | 4 portes",
-      air: "Air conditionné",
-      option: "Automatique",
-      condition: "Plein a rendre plein",
-      image: "voitures/bmw.jpg",
-      price: 300,
-      modele: 1,
-      matricule: "Bmw15"
-    };
-    this.crud.add("voiture/add",v)
-      .subscribe(data=>{
-        console.log(data);
-        
-      },err=>{
-        console.log(err);
-        
-      });
-  }
+
   getVoitureStorage(voiture:any){
     console.log(voiture.image);
     this.afSG.ref(voiture.image).getDownloadURL()
@@ -87,6 +78,7 @@ export class ParcVehiculePage implements OnInit {
         console.log(data);
         this.voitures.push(
           {
+            id: voiture.id,
             libelle: voiture.description,
             capacite: voiture.capacite,
             air: voiture.air,
@@ -109,6 +101,8 @@ export class ParcVehiculePage implements OnInit {
     this.crud.get(url)
       .subscribe(data=>{
         console.log(data); 
+        this.v = data;
+        this.vehicules = this.v;
         for(let i=0; i<data['length']; i++){
           console.log(i);
           this.getVoitureStorage(data[i]);

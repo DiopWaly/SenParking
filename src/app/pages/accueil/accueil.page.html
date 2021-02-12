@@ -1,20 +1,32 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar class="toolbar">
     <!-- <img src="../assets/images/senparking2.png" alt="" class="logo"/> -->
     <div *ngIf="user.prenom != null; else default">
-      <ion-label>
-        <h2>Bienvenue,</h2>
-        <p>{{user.prenom}} {{user.nom}}</p>
-      </ion-label>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="../assets/img/me.jpg" />
+        </ion-avatar>
+        <ion-label>
+          <h2>Bienvenue,</h2>
+          <p>{{user.prenom}} {{user.nom}}</p>
+        </ion-label>
+      </ion-item>
     </div>
     <ng-template #default>
-      <ion-label>
-        <h2>Bienvenue sur</h2>
-        <p>Senparking</p>
-      </ion-label>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="../assets/img/senparking2.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2>Bienvenue sur</h2>
+          <p>Senparking</p>
+        </ion-label>
+      </ion-item>
     </ng-template>
     <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
+      <ion-button class="border" fill="solid" color="light">
+        <ion-icon name="notifications" color="primary"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -27,21 +39,85 @@
     <ion-slide><img src="../assets/images/voitures/bmw.jpg" alt="" class="sl"></ion-slide>
     <ion-slide><img src="../assets/images/voitures/range.jpg" alt="" class="sl"></ion-slide>
   </ion-slides>
-  <ion-card class="ion-card">
-    <ion-card-header>
-      <ion-card-subtitle>Automoblie</ion-card-subtitle>
-      <ion-card-title>SenParking</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>
-        Avec une experience de plus de 10 ans , met a la disposition de sa clientéle 
-        un parc auntomobile de 50 bus de 15 a 65 places et plus de <strong>200 vehicules</strong> de differentes categories 
-        a sovoir Berline, 4x4 Pick Up ect. 
-      </p>
-      <p>
-        Pour vos seminaires, conferences et reunions internationales, notre  en matiere de transportvous sera d'un  apport 
-        considerable pour gerer les deplacements de vos hotes dans le confort et la securité.
-      </p>
-    </ion-card-content>
-  </ion-card>
+  <div class="menuAcueil">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card class="ion-card ion-text-left" (click)="navigate('/parc-vehicule')">
+            <ion-card-content>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-icon class="icon" name="car-sport"></ion-icon>
+                  </ion-col>
+                  <ion-col size="8">
+                    <p>Parc Vehicule</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="ion-card ion-text-left" (click)="navigate('/reservation')">
+            <ion-card-content>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-icon class="icon" name="paper-plane"></ion-icon>
+                  </ion-col>
+                  <ion-col size="8">
+                    <p>Presentation</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card class="ion-card ion-text-left" (click)="navigate('/imprime-reservation')">
+            <ion-card-content>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-icon class="icon" name="cart"></ion-icon>
+                  </ion-col>
+                  <ion-col size="8">
+                    <p>Reservation</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="ion-card ion-text-left" (click)="call()">
+            <ion-card-content>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-icon class="icon" name="call"></ion-icon>
+                  </ion-col>
+                  <ion-col size="8">
+                    <p>Contact</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
+<ion-footer class="ion-no-border ion-text-center">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>&copy;copy</ion-title>
+  </ion-toolbar>
+</ion-footer>

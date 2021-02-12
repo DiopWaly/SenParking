@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'inscription',
     loadChildren: () => import('./pages/inscription/inscription.module').then( m => m.InscriptionPageModule)
+  },
+  {
+    path: 'imprime-reservation',
+    loadChildren: () => import('./pages/imprime-reservation/imprime-reservation.module').then( m => m.ImprimeReservationPageModule)
   }
 ];
 

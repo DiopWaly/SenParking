@@ -1,62 +1,56 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>contact</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/accueil" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Contact</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class="sign-in-content">
-  <h2 class="auth-title">
-    Sign In with Firebase
-  </h2>
-  <form [formGroup]="signInForm" (ngSubmit)="signInWithEmail()">
-    <ion-list class="inputs-list" lines="full">
-      <ion-item class="input-item">
-        <ion-input type="email" placeholder="Email" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
-      </ion-item>
-      <div class="error-container">
-        <ng-container *ngFor="let validation of validation_messages.email">
-          <div class="error-message" *ngIf="signInForm.get('email').hasError(validation.type) && (signInForm.get('email').dirty || signInForm.get('email').touched)">
-            <ion-icon name="information-circle-outline"></ion-icon>
-            <span>{{ validation.message }}</span>
-          </div>
-        </ng-container>
-      </div>
-
-      <ion-item class="input-item">
-        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-      </ion-item>
-      <div class="error-container">
-        <ng-container *ngFor="let validation of validation_messages.password">
-          <div class="error-message" *ngIf="signInForm.get('password').hasError(validation.type) && (signInForm.get('password').dirty || signInForm.get('password').touched)">
-            <ion-icon name="information-circle-outline"></ion-icon>
-            <span>{{ validation.message }}</span>
-          </div>
-        </ng-container>
-      </div>
-    </ion-list>
-
-    <ion-button class="sign-in-btn" type="submit" expand="block" [disabled]="!signInForm.valid">Sign In</ion-button>
-    <div class="error-container" *ngIf="submitError">
-      <div class="error-message">
-        <ion-icon name="information-circle-outline"></ion-icon>
-        <span>{{ submitError }}</span>
-      </div>
-    </div>
-    <ion-row class="sign-up-btn-wrapper">
-      <ion-button class="sign-up-btn" fill="clear" [routerLink]="['/sign-up']">
-        Don't have an account?
-      </ion-button>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card (click)="onClick()">
+          <ion-card-header>
+          </ion-card-header>
+          <ion-card-content class="ion-text-left">
+            <ion-card-title class="ion-text-center ion-margin-bottom ">Awesome Title</ion-card-title>
+            <ion-card-subtitle class="ion-text-right">10/50GB</ion-card-subtitle>
+            <ion-progress-bar value="0.5  "></ion-progress-bar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+          </ion-card-header>
+          <ion-card-content class="ion-text-left">
+            <ion-card-title class="ion-text-center ion-margin-bottom ">Awesome Title</ion-card-title>
+            <ion-card-subtitle class="ion-text-right">10/50GB</ion-card-subtitle>
+            <ion-progress-bar value="0.5  "></ion-progress-bar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
-  </form>
-
-  <!-- <div class="social-auth-options">
-    <p class="options-divider">Or</p>
-    <ion-button class="social-auth-btn" color="primary" expand="block" (click)="facebookSignIn()">Facebook Sign In</ion-button>
-    <ion-button class="social-auth-btn google-auth-btn" color="danger" expand="block" (click)="googleSignIn()">Google Sign In</ion-button>
-    <ion-button class="social-auth-btn twitter-auth-btn" color="secondary" expand="block" (click)="twitterSignIn()">Twitter Sign In</ion-button>
-  </div> -->
+  </ion-grid>
+  <ion-card class="ion-card">
+    <ion-card-header>
+      <ion-card-subtitle>Automoblie</ion-card-subtitle>
+      <ion-card-title>SenParking</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Avec une experience de plus de 10 ans , met a la disposition de sa clientéle 
+        un parc auntomobile de 50 bus de 15 a 65 places et plus de <strong>200 vehicules</strong> de differentes categories 
+        a sovoir Berline, 4x4 Pick Up ect. 
+      </p>
+      <p>
+        Pour vos seminaires, conferences et reunions internationales, notre  en matiere de transportvous sera d'un  apport 
+        considerable pour gerer les deplacements de vos hotes dans le confort et la securité.
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-

@@ -7,6 +7,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -49,7 +50,8 @@ export const firebaseConfig = {
     SplashScreen,
     SQLite,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    PhotoViewer
+    PhotoViewer,
+    CallNumber
   ],
   bootstrap: [AppComponent]
 })

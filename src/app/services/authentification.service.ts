@@ -9,18 +9,25 @@ export class AuthentificationService {
 
   public auth : boolean;
   public token : any;
-  constructor(private httpclient : HttpClient) { }
+  constructor(private httpclient : HttpClient,private crud: CrudService) { }
 
   login(client : any){
-    return this.httpclient.patch("https://localhost:8000/client/login",client);
+    return this.httpclient.patch(this.crud.url+"client/login",client);
   }
 
   public saveToken(client: any){
     this.token = "qwerty";
     localStorage.setItem("myToken", this.token);
+    localStorage.setItem("id", client.id);
     localStorage.setItem("prenom", client.prenom);
     localStorage.setItem("nom", client.nom);
     localStorage.setItem("civilite", client.civilite);
+    localStorage.setItem("email", client.email);
+    localStorage.setItem("tel", client.tel);
+    localStorage.setItem("dateNaissance", client.dateNaissance);
+    localStorage.setItem("lieuNaissance", client.lieuNaissance);
+    localStorage.setItem("numPermis", client.numPermis);
+    localStorage.setItem("userName", client.userName);
   }
   public loadToken(){
     this.token = localStorage.getItem("myToken");
@@ -35,9 +42,16 @@ export class AuthentificationService {
 
   public logout(){
     localStorage.removeItem("myToken");
+    localStorage.removeItem("id");
     localStorage.removeItem("prenom");
     localStorage.removeItem("nom");
     localStorage.removeItem("civilite");
+    localStorage.removeItem("email");
+    localStorage.removeItem("tel");
+    localStorage.removeItem("dateNaissance");
+    localStorage.removeItem("lieuNaissance");
+    localStorage.removeItem("numPermis");
+    localStorage.removeItem("userName");
     this.auth = false;
   }
   init() {

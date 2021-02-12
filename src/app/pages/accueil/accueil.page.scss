@@ -2,13 +2,41 @@
     width: 70px;
     height: 70px;
 }
-
+ion-content{
+    --background: linear-gradient(90deg, #7590d6 0%, #4d71d7 100%);
+    padding: 0;
+    margin: 0;
+}
+.menuAcueil{
+    background: rgba(255,255,255,1);
+}
+.icon{
+    width: 120%;
+    height: 120%;
+    color: rgba(10, 45, 245, 0.8);
+    margin: 0;
+}
 .ion-card{
-    margin: 0px 0px 0px 0px;
-    padding: 1px 1px 1px 1px;
-    background-color: orangered;
+    margin: 2px;
+    height: 60px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px 0 0px 0 ;
+    border: solid 1px rgb(199, 196, 195,0.5);
+    background-color: rgba(255, 255, 255,0.3);
+    ion-card-content{
+        padding: 0;
+        ion-grid{
+            padding: 1px;
+        }
+    }
     p{
         color: black;
+        font-size: 12px;
+        font-weight: 100;
+        letter-spacing: 0.4px;
+        padding-left: 1px;
+        padding-top: 1px;
     }
 }
 
@@ -16,12 +44,21 @@
     margin-bottom: 14px;
 }
 ion-slides {
-    --bullet-background: red;
-    --bullet-background-active: rebeccapurple;
+    --bullet-background: rgb(252, 194, 172);
+    --bullet-background-active: linear-gradient(90deg, #7590d6 0%, #4d71d7 100%);
+    margin-bottom: 0;
+    padding: 0 0 0 0;
+    img{
+        width: 150%;
+        height: 150%;
+    }
 }
 .toolbar{
-    --color: white;
+    height: 100px;
+    --background-color: #7590d6;
     --background: linear-gradient(90deg, #7590d6 0%, #4d71d7 100%);
+    --color: white;
+    //--background: linear-gradient(90deg, #7590d6 50%, #4d71d7 100%);
     text-align: center;
     h2{
         color: white;
@@ -33,5 +70,19 @@ ion-slides {
         color: #e4e4e4;
         letter-spacing: 0.4px;
       }
-    
+      ion-item{
+          --background: #7590d6;
+          --background: linear-gradient(90deg, #7590d6 0%, #4d71d7 100%);
+          ion-avatar{
+              width: 50px;
+              height: 50px;
+              --border-radius: 30px;
+              --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #FFF;
+          }
+      }
+      .border{
+            padding-right: 20px;
+          --border-radius: 30px;
+          --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #FFF;
+      }
 }

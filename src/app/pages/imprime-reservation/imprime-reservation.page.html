@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Les reservations effectues</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/accueil" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let reserve of reserves" >
+      <ion-card *ngIf="reserve ;else default" >
+        <ion-card-header>
+          <ion-card-subtitle><h3>Resevation N°</h3></ion-card-subtitle>
+          <ion-card-title>{{reserve.id}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-img [src]="reserve.voiture.image" class="image"></ion-img>
+            <ion-item >
+              <ion-label>Client: {{reserve.client.prenom}} {{reserve.client.nom}}</ion-label>
+            </ion-item>
+            <ion-item >
+              <ion-label>Chauffeur: {{reserve.chauffeur.numpermis}}</ion-label>
+            </ion-item>
+            <ion-item >
+              <ion-label>Voiture: {{reserve.voiture.matricule}}</ion-label>
+            </ion-item>
+            <ion-item >
+              <ion-label>Reserver le {{reserve.dateReservation | date: 'dd/MM/yyyy'}}</ion-label>
+            </ion-item>
+            <ion-item >
+              <ion-label>Retoure le {{reserve.dateRetour | date: 'dd/MM/yyyy'}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ng-template #default>
+        <h1>Vide !!!</h1>
+      </ng-template>
+  </div>
+</ion-content>

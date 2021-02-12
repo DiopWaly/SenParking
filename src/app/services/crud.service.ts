@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Reserver } from './../classes/reserver';
 import { Voiture } from './../classes/voiture';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
-
-  private url:string = "https://localhost:8000/";
+  // public url:string = "http://localhost:8010/";
+  public url:string = "https://demowalyapi.herokuapp.com/";
   private voiture: Voiture;
+  private reserver: Reserver;
   public cat: number;
   public user: any;
   constructor(private httpclient : HttpClient) {}
@@ -32,5 +34,11 @@ export class CrudService {
   }
   public async setVoiture(voiture: Voiture){
     this.voiture = voiture;
+  }
+  public getReserver(): Reserver{
+    return this.reserver;
+  }
+  public async setReserver(reserver: Reserver){
+    this.reserver = reserver;
   }
 }
